@@ -42,6 +42,7 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+Closure is a function enclosed together with references outside it.
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,9 +64,11 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+closure is used in line 50 where there is a function called in a function
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+The name will always be the same but the roll will be random 1-6
 c. What is the lexical scope of `newRoll`? 
-
+personalDice
 ### Task 2c - Exit Ticket
 
 Once you begin, you will have 15 minutes to answer the questions [here](https://app.codesignal.com/public-test/WjSzNh9gDrD8Xn8hw/enY3yPRP3nEm7E).
