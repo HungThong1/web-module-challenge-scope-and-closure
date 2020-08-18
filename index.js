@@ -28,9 +28,15 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * counter1 has everything declared within the function.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * counter2 uses a closure, because count is declared outside the function
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 
+ * Counter1 is prefered over counter2 when you don't want any global variables.
  *
 */
 
@@ -56,12 +62,13 @@ function counter2() {
 
 Write a function called `inning` that returns a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(){
 
-    /*Code Here*/
-
+  min = Math.ceil(0);
+  max = Math.floor(2);
+  return  Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
+console.log(inning())
 /* Task 3: finalScore()
 
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
@@ -76,11 +83,16 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(scored, numberofinnings){
+let Home = 0;
+let Away = 0;
+for (var i = 1; i <= numberofinnings; i++){
+  Home = Home + scored();
+  Away = Away + scored();
 }
+return "Home :" + Home + "\nAway :" + Away;
+}
+console.log(finalScore(inning, 9))
 
 /* Task 4: 
 
@@ -101,10 +113,28 @@ and returns the score at each pont in the game, like so:
 8th inning: awayTeam - homeTeam
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
-
-
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard( inning, numberofinnings){
+  let Home = 0
+  let Away = 0
+  
+  for (var i = 1; i <= numberofinnings; i++){
+    Home = Home + inning();
+    Away = Away + inning();
+    if(i === 1){
+      pre = "st"
+    }
+    else if(i === 2){
+      pre = "nd"
+    }
+    else if(i === 3){
+      pre = "rd"
+    }
+    else{
+      pre = "th"
+    }
+    console.log(i+ pre +" inning: " + Home + " - " + Away);
+  }
+  console.log("Final Score: "+ Home + " - " + Away)
 }
-
+scoreboard(inning, 9)
 
